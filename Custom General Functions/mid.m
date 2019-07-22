@@ -33,7 +33,7 @@ function indices = mid(data, opt_dimension)
       tempSubscripts = mid(data, iDim); % Recursive call with dimensional argument
       if size(tempSubscripts, 1) > 1 % If 2 subscript column vector returned
         nTwoElementVectors = nTwoElementVectors + 1;
-        % Arrange corresponding subscripts so ever possibly point combination is created
+        % Arrange corresponding subscripts so every possible point combination is created
         midSubscripts(1:nIndices, iDim) = reshape(reshape(kron(tempSubscripts',ones(nIndices / 2, 1)), 2^(nTwoElementVectors - 1), [])', [], 1);
       else % If single subscript is returned
         midSubscripts(1:nIndices, iDim) = tempSubscripts;
