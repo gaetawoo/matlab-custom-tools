@@ -1,2 +1,2 @@
-Add-Ons/
-Extras/
+*.asv
+.vscode/
