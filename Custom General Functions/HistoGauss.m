@@ -1,4 +1,22 @@
 function [rawMean, rawStDev, fitMean, fitStDev] = HistoGauss(y, nbins)
+  % HISTOGAUSS displays input y as a histogram of N nbins and fits a gaussian curve to it
+  %
+  % SYNTAX:
+  %    [rawMean, rawStDev, fitMean, fitStDev] = HistoGauss(y, nbins)
+  %
+  % INPUTS:
+  %    y - Vector of values
+  %    nbins - Number of bins to split y into. If not given, system default is used.
+  %
+  % OUTPUTS:
+  %    rawMean - Mean based on raw input data y
+  %    rawStDev - Standard Deviation based on raw input data y
+  %    fitMean - Mean based on gaussian curve fit
+  %    fitStDev - Standard Deviation based on gaussian curve fit
+  
+  % Created on: August 02, 2019
+  % By: Jeremiah Valenzuela
+  
   figure;
   ax = gca;
   if exist('nbins', 'var')
