@@ -30,9 +30,9 @@ function roipositioncheck(flagShowFOV, flagFlatfield)
   
   if strcmpi(flagFlatfield, 'on')
     dataSetName = targetFilename(1:strfind(targetFilename, ' P') - 1);
-    if contains(dataSetName, 'red')
+    if contains(dataSetName, 'red', 'IgnoreCase', true)
       colorName = 'Red';
-    elseif contains(dataSetName, 'blue')
+    elseif contains(dataSetName, 'blue', 'IgnoreCase', true)
       colorName = 'Blue';
     else
       colorName = 'Green';
@@ -88,7 +88,8 @@ function roipositioncheck(flagShowFOV, flagFlatfield)
       'LineWidth', 1.0, 'LineStyle', '-', 'Color', 'red')
     xc = roiTable.Xstart(iRoiEntry) + roiTable.Width(iRoiEntry) / 2;
     yc = roiTable.Ystart(iRoiEntry) + roiTable.Height(iRoiEntry) / 2;
-    text(xc, yc, roiTable.Name{iRoiEntry}, 'Color', 'cyan', 'FontSize', 25)
+    text(xc + 4, yc + 6, roiTable.Name{iRoiEntry}, 'Color', 'black', 'FontSize', 27, 'FontName', 'Arial Bold', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle');
+		text(xc, yc, roiTable.Name{iRoiEntry}, 'Color', 'green', 'FontSize', 27,  'FontName', 'Arial', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle');
   end
   
   % Plot FFOV boundary
@@ -114,5 +115,5 @@ function roipositioncheck(flagShowFOV, flagFlatfield)
   end
   
   hold off
-  
+  tightenaxes(gca, 1)
 end
