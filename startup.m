@@ -3,5 +3,5 @@ try %#ok
 	if ~verLessThan('matlab','9.5')
 		set(groot,'defaultFigureCreateFcn',@(fig,~)addToolbarExplorationButtons(fig));
 	end
-	setenv('MTFDIR', 'C:\Users\jeremiah.valenzuela\Documents\Projects\Software\18125 Agatha\FFMTF');
+	setenv('MTFDIR', 'C:\Users\jeremiah.valenzuela\Documents\Projects\Software\18125 Agatha\FFOVMTF');
 end
