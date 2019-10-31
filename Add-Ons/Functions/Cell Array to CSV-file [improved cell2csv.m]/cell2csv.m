@@ -1,4 +1,4 @@
-function cell2csv(fileName, cellArray, separator, excelYear, decimal)
+function cell2csv(fileName, cellArray, separator, filePermissions, excelYear, decimal)
 % % Writes cell array content into a *.csv file.
 % % 
 % % CELL2CSV(fileName, cellArray[, separator, excelYear, decimal])
@@ -8,6 +8,18 @@ function cell2csv(fileName, cellArray, separator, excelYear, decimal)
 % % 
 % % optional:
 % % separator    = sign separating the values (default = ',')
+% % filePermissions = opens the file fileName in the mode specified by
+% %     filePermissions:
+% %     'r'     open file for reading
+% %     'w'     open file for writing; discard existing contents
+% %     'a'     open or create file for writing; append data to end of file
+% %     'r+'    open (do not create) file for reading and writing
+% %     'w+'    open or create file for reading and writing; discard existing
+% %             contents
+% %     'a+'    open or create file for reading and writing; append data to end of
+% %             file             
+% %     'W'     open file for writing without automatic flushing
+% %     'A'     open file for appending without automatic flushing
 % % excelYear    = depending on the Excel version, the cells are put into
 % %                quotes before they are written to the file. The separator
 % %                is set to semicolon (;)  (default = 1997 which does not change separator to semicolon ;)
@@ -23,10 +35,19 @@ function cell2csv(fileName, cellArray, separator, excelYear, decimal)
 % % One array can contain all of them, but only one value per cell.
 % % 2x times faster than Sylvain's codes (8.8s vs. 17.2s):
 % % tic;C={'te','tm';5,[1,2];true,{}};C=repmat(C,[10000,1]);cell2csv([datestr(now,'MMSS') '.csv'],C);toc;
+% % 
+% % Modified and Optimized by Jeremiah Valenzuela, Oct 24, 2019
+% % - Improved performance drastically for network drives and about 30% for local drives. 
+% % - Solved escape character issue with the same performance fix
+% % - Added ability to use different file permissions, like append
 
 %% Checking for optional Variables
 if ~exist('separator', 'var')
     separator = ',';
+end
+
+if ~exist('filePermissions', 'var')
+    filePermissions = 'w';
 end
 
 if ~exist('excelYear', 'var')
@@ -46,11 +67,14 @@ end
 cellArray = cellfun(@StringX, cellArray, 'UniformOutput', false);
 
 %% Write file
-datei = fopen(fileName, 'w');
-[nrows,ncols] = size(cellArray);
-for row = 1:nrows
-    fprintf(datei,[sprintf(['%s' separator],cellArray{row,1:ncols-1}) cellArray{row,ncols} '\n']);
-end    
+datei = fopen(fileName, filePermissions);
+
+% Join cell rows with separator and convert to string. This drastically
+% improves performance of writing the file, especially on network drives,
+% and solves any special character issues (like \ and % which are escape
+% characters in fprintf.
+fprintf(datei, '%s\n', string(join(cellArray, separator)));
+
 % Closing file
 fclose(datei);
 

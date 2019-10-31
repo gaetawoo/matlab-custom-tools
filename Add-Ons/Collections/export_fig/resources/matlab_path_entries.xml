@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <paths>
-
   <path>.</path>
-
-  <path>altmany-export_fig-b1a7288</path>
-
+  <path>altmany-export_fig-3175417</path>
+  <path>altmany-export_fig-3175417\resources\project</path>
+  <path>altmany-export_fig-3175417\resources\project\Extensions.type.Root</path>
+  <path>altmany-export_fig-3175417\resources\project\Extensions.type.Root\DependencyAnalysis.type.Extension</path>
+  <path>altmany-export_fig-3175417\resources\project\Root.type.Categories</path>
+  <path>altmany-export_fig-3175417\resources\project\Root.type.Categories\FileClassCategory.type.Category</path>
+  <path>altmany-export_fig-3175417\resources\project\Root.type.Files</path>
+  <path>altmany-export_fig-3175417\resources\project\Root.type.ProjectPath</path>
 </paths>

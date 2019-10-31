@@ -17,6 +17,15 @@ function out = randbetween(v1, v2, n)
   %   >> randbetween(20, 19.5)
   %        19.538
   %
+	%   ALSO SEE: (even though I derived the code below, there is a MATLAB answer here)
+	%     https://www.mathworks.com/help/matlab/math/floating-point-numbers-within-specific-range.html
+	% 	  Create a vector of 1000 random values. Use the rand function to draw the values from a uniform distribution in the open interval, (50,100).
+	%
+	%     a = 50;
+	%     b = 100;
+	%     r = (b-a).*rand(1000,1) + a
+	%
+	%     Invert this equation to solve for the rand() value to scale a range to between 0 and 1
   
   %   By Jeremiah Valenzuela
   %   2019

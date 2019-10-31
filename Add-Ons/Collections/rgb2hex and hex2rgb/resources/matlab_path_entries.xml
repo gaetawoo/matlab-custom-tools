@@ -1,10 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <paths>
-
   <path>.</path>
-
   <path>rgb2hex_and_hex2rgb_documentation</path>
-
-  <path>rgb2hex_and_hex2rgb_documentation/html</path>
-
+  <path>rgb2hex_and_hex2rgb_documentation\html</path>
 </paths>

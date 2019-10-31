@@ -20,9 +20,17 @@ function circ = circlefit(x, y)
   %  Example:
   %  mask = array > 30 & array < 40;
   %  [y, x] = find(mask);
+	%
+	% 	mask = img > 70 & img < 80;
+	% 	[y, x] = find(mask);
+	% 	figure;
+	% 	imshow(img);
+	% 	hold on
+	% 	circ = circlefit(x, y);
+	% 	circle(circ.XYcenter(1), circ.XYcenter(2), circ.Radius);
   
   x = x(:); y = y(:);
-  a = [x, y, ones(size(x))] \ [-(x.^2 + y.^2)];
+  a = [x, y, ones(size(x))] \ -(x.^2 + y.^2);
   circ.XYcenter = [-0.5 * a(1), -0.5 * a(2)];
   circ.Radius = sqrt((a(1)^2 + a(2)^2) / 4 - a(3));
 end

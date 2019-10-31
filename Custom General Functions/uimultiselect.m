@@ -3,7 +3,7 @@ function [filenamesCell, filepathString] = uimultiselect(varargin)
   
   % Check if uigetfile was cancelled out
   if ~iscell(filenames) && ~ischar(filenames)
-    cprintf('*Red', 'No files selected\n')
+    fprintf('No files selected\n')
     error('No files selected')
   end
   

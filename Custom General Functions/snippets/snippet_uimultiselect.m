@@ -4,6 +4,7 @@ try
 catch
   return
 end
-for nFiles = 1:size(filenamesCell, 1)
-  MAINFUNCTION([filepath, filenamesCell(nFiles)])
+nFiles = numel(filenamesCell);
+for iFile = 1:nFiles
+  MAINFUNCTION([filepath, filenamesCell(iFile)])
 end
