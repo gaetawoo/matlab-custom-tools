@@ -1,10 +1,14 @@
 function [filenamesCell, filepathString] = uimultiselect(varargin)
-  [filenames, filepathString] = uigetfile(varargin{:}, 'MultiSelect', 'on');
-  
+  if isempty(varargin)
+    [filenames, filepathString] = uigetfile('*.*', 'MultiSelect', 'on');
+  else
+    [filenames, filepathString] = uigetfile(varargin{:}, 'MultiSelect', 'on');
+  end
+    
   % Check if uigetfile was cancelled out
   if ~iscell(filenames) && ~ischar(filenames)
-    fprintf('No files selected\n')
-    error('No files selected')
+    filenames = 0;
+    filepathString = 0;
   end
   
   % Set to cell if string

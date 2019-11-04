@@ -1,12 +1,14 @@
 function fullfilepath = uigetfullfile(varargin)
 	%UIGETFULLFILE
 	% output is string array
-	
-	[filenames, filepath] = uigetfile(varargin{:});
+	if isempty(varargin)
+		[filenames, filepath] = uigetfile('*.*');
+	else
+		[filenames, filepath] = uigetfile(varargin{:});
+	end
 	
 	% Check if uigetfile was cancelled out
 	if ~iscell(filenames) && ~ischar(filenames)
-		warning('No files selected')
 		fullfilepath = 0;
 	else
 		if ischar(filenames)
