@@ -12,13 +12,13 @@ function output = getBitDepth(imageArray)
 	%    output - A struct with current bit-depth, amount of bit-shift, and original bit-depth
 	%
  	% EXAMPLE:
-	% 	>> getBitDepth(img)
-	% 	ans =
+	%   >> getBitDepth(img)
+	%   ans =
 	%   struct with fields:
 	%
 	%             BitDepth: 16
 	%             BitShift: 4
-	% 						OriginalBitDepth: 12
+	%             OriginalBitDepth: 12
 	%             DataClass: 'uint16'
 	%
 	
