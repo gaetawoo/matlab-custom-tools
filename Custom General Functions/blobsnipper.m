@@ -54,8 +54,10 @@ function [snip, xyfullcentroid] = blobsnipper(inputImage, snippetSize, threshold
   
   % Display snippet for verification of a good crop
   figure
-  imshow(snip);
-  disp({'Centroid as X,Y'})
-  disp(xyfullcentroid)
+	if strcmpi(class(snip), 'double')
+		imshow(snip, [])
+	else
+		imshow(snip);
+	end
   
 end
