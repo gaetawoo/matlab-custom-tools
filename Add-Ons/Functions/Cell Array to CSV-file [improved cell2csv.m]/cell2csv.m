@@ -39,10 +39,11 @@ function cell2csv(fileName, cellArray, numericPrecision, delimiter, filePermissi
 % % tic;C={'te','tm';5,[1,2];true,{}};C=repmat(C,[10000,1]);cell2csv([datestr(now,'MMSS') '.csv'],C);toc;
 % % 
 % % Modified and Optimized by Jeremiah Valenzuela, Oct 24, 2019
-% % - Improved performance drastically for network drives and about 30% for local drives. Faster
+% % - Improved performance drastically for network drives and a bit for local drives. Faster
 % %   than writecell()
 % % - Solved escape character issue with the same performance fix
 % % - Added ability to use different file permissions, like append
+% % - Added ability to specify float precision
 
 %% Checking for optional Variables
 if ~exist('delimiter', 'var')
