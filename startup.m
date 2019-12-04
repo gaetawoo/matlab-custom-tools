@@ -4,4 +4,5 @@ try %#ok
 		set(groot,'defaultFigureCreateFcn',@(fig,~)addToolbarExplorationButtons(fig));
 	end
 	setenv('MTFDIR', 'C:\Users\jeremiah.valenzuela\Documents\Projects\Software\18125 Agatha\FFOVMTF');
+	recycle('on')
 end
