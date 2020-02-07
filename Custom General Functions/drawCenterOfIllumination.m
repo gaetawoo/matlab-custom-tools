@@ -25,11 +25,21 @@ function circ = drawCenterOfIllumination(image, minVal, maxVal)
 	if ~exist('image', 'var')
 		image = imread(uigetfullfile('*.bmp;*.tif', 'Select an image file.'));
 	else
-		if contains(class(image),{'char', 'string'})
+		if strcmpi(image, '')
+			image = imread(uigetfullfile('*.bmp;*.tif', 'Select an image file.'));
+		elseif contains(class(image),{'char', 'string'})
 			image = imread(image);
 		end
 	end
-	
+    
+    if size(image, 3) == 3
+        if isequal(image(:, :, 1), image(:, :, 2), image(:, :, 3))
+            image = image(:,:,1);
+        else
+            image = rgb2gray(image);
+        end
+    end
+    
 	if exist('minVal', 'var')
 		if ~exist('maxVal', 'var')
 			error('Both minVal and maxVal values are required if one or the other is specified.')
