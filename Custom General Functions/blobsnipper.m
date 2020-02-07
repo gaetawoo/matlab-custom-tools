@@ -1,4 +1,4 @@
-function [snip, xyfullcentroid] = blobsnipper(inputImage, snippetSize, threshold)
+function [snip, xyfullcentroid, boundary] = blobsnipper(inputImage, threshold, snippetSize)
   
   if ~exist('threshold', 'var')
     threshold = 10; % Counts
@@ -34,16 +34,17 @@ function [snip, xyfullcentroid] = blobsnipper(inputImage, snippetSize, threshold
     cprintf('*Red', 'No blob found.\n\n')
     snip = [];
     return
-  end
-  
-  rcfullcentroid.Row = round(rcfullcentroid.Row);
-  rcfullcentroid.Col = round(rcfullcentroid.Col);
+	end
+	
+	rcfullcentroid.Col = round(rcfullcentroid.Col);
+	rcfullcentroid.Row = round(rcfullcentroid.Row);
+
   %% Get final cumulative power
   % Check snipping region to make sure it is within the image bounds
-  edgeLeft = rcfullcentroid.Col - round(snippetSize / 2) + 1;
-  edgeRight = rcfullcentroid.Col + round(snippetSize / 2);
-  edgeTop = rcfullcentroid.Row - round(snippetSize / 2) + 1;
-  edgeBottom = rcfullcentroid.Row + round(snippetSize / 2);
+  edgeLeft = rcfullcentroid.Col - round(snippetSize / 2);
+  edgeRight = rcfullcentroid.Col + round(snippetSize / 2) - 1;
+  edgeTop = rcfullcentroid.Row - round(snippetSize / 2);
+  edgeBottom = rcfullcentroid.Row + round(snippetSize / 2) - 1;
   if edgeLeft < 1, edgeLeft = 1; end
   if edgeRight > size(inputImage, 2), edgeRight = size(inputImage, 2); end
   if edgeTop < 1, edgeTop = 1; end
@@ -51,7 +52,7 @@ function [snip, xyfullcentroid] = blobsnipper(inputImage, snippetSize, threshold
   
   % Crop to snippet of spot
   snip = inputImage(edgeTop:edgeBottom, edgeLeft:edgeRight);
-  
+  boundary = [edgeTop, edgeBottom, edgeLeft, edgeRight];
   % Display snippet for verification of a good crop
   figure
 	if strcmpi(class(snip), 'double')
@@ -59,5 +60,5 @@ function [snip, xyfullcentroid] = blobsnipper(inputImage, snippetSize, threshold
 	else
 		imshow(snip);
 	end
-  
+  tightenaxes(gca, 'zeroedge')
 end
