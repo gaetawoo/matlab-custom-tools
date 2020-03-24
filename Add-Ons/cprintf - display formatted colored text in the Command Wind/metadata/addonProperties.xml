@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><addonProperties xmlns="http://schemas.mathworks.com/matlab/addon/2014/addonProperties"><identifier type="GUID">e563da55-4a80-11e4-9553-005056977bd0</identifier><description>Syntax:
+     count = cprintf(style,format,...)
+ 
+Description:
+CPRINTF processes the specified text using the exact same FORMAT arguments accepted by the built-in SPRINTF and FPRINTF functions.
+ 
+CPRINTF then displays the text in the Command Window using the specified STYLE argument. The accepted styles are those used for Matlab's syntax highlighting (see: File / Preferences / Colors / M-file Syntax Highlighting Colors), and also user-defined colors.
+ 
+The possible pre-defined STYLE names are:
+ 
+   'Text'                 - default: black
+   'Keywords'             - default: blue
+   'Comments'             - default: green
+   'Strings'              - default: purple
+   'UnterminatedStrings'  - default: dark red
+   'SystemCommands'       - default: orange
+   'Errors'               - default: light red
+   'Hyperlinks'           - default: underlined blue
+ 
+   'Black','Cyan','Magenta','Blue','Green','Red','Yellow','White'
+ 
+STYLE beginning with '-' o '_' will be underlined. For example:
+   '-Blue' =&gt; underlined blue, like 'Hyperlinks'
+   '_Comments' =&gt; underlined green
+ 
+STYLE beginning with '*' will be bold (R2011b+ only). For example:
+   '*Blue' is bold blue;
+   '*Comments' is bold green etc.
+Note: Matlab does not currently support both bold and underline, only one of them can be used in a single cprintf command. But of course bold and underline can be mixed by using separate commands.
+ 
+STYLE also accepts a regular Matlab RGB vector, that can be negated for underlining. For example: -[0,1,1] means underlined cyan.
+ 
+STYLE is case-insensitive and accepts unique (non-ambiguous) partial strings (for example, 'cy' instead of 'cyan').
+ 
+Examples (see results in the attached screenshot):
+   cprintf;   % displays the demo
+   cprintf('text',   'regular black text');
+   cprintf('hyper',  'followed %s','by');
+   cprintf('key',    '%d colored', 4);
+   cprintf('-comment','&amp; underlined');
+   cprintf('err',    'elements\n');
+   cprintf('cyan',   'cyan');
+   cprintf('_green', 'underlined green');
+   cprintf(-[1,0,1], 'underlined magenta');
+   cprintf('*blue',  'and *bold* (R2011b+ only)\n');
+   cprintf([1,0.5,0],'and multi-\nline orange\n');
+ 
+Bugs and suggestions:
+Please send to Yair Altman (altmany at gmail dot com)
+ 
+Warning:
+This code heavily relies on undocumented and unsupported Matlab functionality. It works on Matlab 7+, but use at your own risk!
+ 
+A technical description of the implementation can be found at: http://UndocumentedMatlab.com/blog/cprintf
+See details &amp; current limitations in the main help section</description><authors><author><name>Yair Altman</name><contact></contact><organization>Consultant</organization></author></authors></addonProperties>

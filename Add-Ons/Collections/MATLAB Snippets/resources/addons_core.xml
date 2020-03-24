@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addonCore>
   <label>MATLAB Snippets</label>
-  <version>1.0.4</version>
+  <version>1.0.6</version>
   <type>zip</type>
   <identifier>90d1927f-ebcd-419f-bb48-52590267fc4d</identifier>
   <createdBy name="Pavel Trnka"/>
