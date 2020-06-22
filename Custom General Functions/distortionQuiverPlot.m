@@ -10,10 +10,10 @@ function distortionQuiverPlot()
 	yVec = data(:,4) - data(:,6);
 	maxDist = max(abs(data(:, 7)));
 	
-	maxX = max(abs(data(:, 5)));
-	maxY = max(abs(data(:, 6)));
-	minX = min(abs(data(:, 5)));
-	minY = min(abs(data(:, 6)));
+	maxX = max((data(:, 5)));
+	maxY = max((data(:, 6)));
+	minX = min((data(:, 5)));
+	minY = min((data(:, 6)));
 	arrowScale = 100;
 	
 	if regexpi(filename, 'image')
@@ -33,12 +33,12 @@ function distortionQuiverPlot()
 		title({plotTitle{1}, sprintf('Max distortion = %.3f%%', maxDist)})
 	else
 		figure;
-		qp = quiver(data(:, 5), -data(:,6), xVec * arrowScale, -yVec * arrowScale, 'autoscale','off');
+		qp = quiver(data(:, 5), data(:,6), xVec * arrowScale, yVec * arrowScale, 'autoscale','off');
 		axis equal
-		axis([-maxX - 800, maxX + 800, -maxY - 800, maxY + 800])
+		axis([minX * 1.3, maxX * 1.3, minY * 1.3, maxY * 1.3])
 		hold on
-		plot(data(:,5),-data(:,6), '.k')
-		plot(data(:,3),-data(:,4), '.r')
+		plot(data(:,5),data(:,6), '.k')
+		plot(data(:,3),data(:,4), '.r')
 		% Add scale arrow
 		quiver((maxX + 800) * 0.1, (maxY + 800) * 0.8, 5 * arrowScale, 0, 'AutoScale', 'off', 'Color', qp.Color);
 		text((maxX + 800) * 0.1 - 450, (maxY + 800) * 0.8 + 180, 'Scale = 5 pixels')
