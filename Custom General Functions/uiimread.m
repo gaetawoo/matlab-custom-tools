@@ -1,4 +1,4 @@
-function [out, fullfilepath] = uiimread(title)
+function [out, fullfilepath] = uiimread(title, suppressoutput)
   if ~exist('title', 'var')
     title = 'Select Image File(s)';
   end
@@ -45,9 +45,11 @@ function [out, fullfilepath] = uiimread(title)
 		end
   end
   waitbar(1, hWaitbar, 'Completed!');
-  close(hWaitbar)
-  disp('Loaded Images:')
-  disp(filenamesCell)
+	close(hWaitbar)
+	if ~exist('suppressoutput', 'var')
+		disp('Loaded Images:')
+		disp(filenamesCell)
+	end
 end
 
 
