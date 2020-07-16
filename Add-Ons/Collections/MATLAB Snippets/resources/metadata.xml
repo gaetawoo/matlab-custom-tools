@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addOn>
+  <identifier>90d1927f-ebcd-419f-bb48-52590267fc4d</identifier>
+  <displayType>Collection</displayType>
+  <translatedDisplayType>
+    <en_US>Collection</en_US>
+    <ja_JP>コレクション</ja_JP>
+    <ko_KR>컬렉션</ko_KR>
+    <zh_CN>集合</zh_CN>
+  </translatedDisplayType>
+  <name>MATLAB Snippets</name>
+  <author>Pavel Trnka</author>
+  <version>1.0.6</version>
+  <downloadUrl>https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/90d1927f-ebcd-419f-bb48-52590267fc4d/08a5e039-a7b3-4c44-81aa-b39e11980abd/packages/zip?src=addons_ml_desktop_install&amp;profile_id=8132776&amp;license=40653930&amp;release_family=R2019b</downloadUrl>
+  <licenseUrl>https://addons.mathworks.com/registry/v1/90d1927f-ebcd-419f-bb48-52590267fc4d/1.0.6/-/license</licenseUrl>
+  <previewImageUrl>https://www.mathworks.com/responsive_image/160/120/0/0/0/cache/matlabcentral/mlc-downloads/downloads/90d1927f-ebcd-419f-bb48-52590267fc4d/08a5e039-a7b3-4c44-81aa-b39e11980abd/images/screenshot.png</previewImageUrl>
+  <releaseNotesUrl>https://www.mathworks.com/add-ons/90d1927f-ebcd-419f-bb48-52590267fc4d/08a5e039-a7b3-4c44-81aa-b39e11980abd/releaseNotes</releaseNotesUrl>
+  <installationFolder>Collections</installationFolder>
+</addOn>

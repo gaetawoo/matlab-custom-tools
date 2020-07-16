@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addOn>
+  <identifier>e563da55-4a80-11e4-9553-005056977bd0</identifier>
+  <displayType>Toolbox</displayType>
+  <translatedDisplayType>
+    <en_US>Toolbox</en_US>
+    <ja_JP>ツールボックス</ja_JP>
+    <ko_KR>툴박스</ko_KR>
+    <zh_CN>工具箱</zh_CN>
+  </translatedDisplayType>
+  <name>cprintf - display formatted colored text in the Command Wind</name>
+  <author>Yair Altman</author>
+  <version>1.11.0.0</version>
+  <downloadUrl>https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/e563da55-4a80-11e4-9553-005056977bd0/1.11.0.0/packages/mltbx?src=addons&amp;profile_id=&amp;license=&amp;release_family=</downloadUrl>
+  <licenseUrl>https://addons.mathworks.com/registry/v1/e563da55-4a80-11e4-9553-005056977bd0/1.11.0.0/-/license</licenseUrl>
+  <previewImageUrl>https://www.mathworks.com/responsive_image/160/120/0/0/0/cache/matlabcentral/mlc-downloads/downloads/e563da55-4a80-11e4-9553-005056977bd0/786f9c6c-2312-44e8-9461-4e5b35831e10/images/screenshot.jpg</previewImageUrl>
+  <releaseNotesUrl>https://www.mathworks.com/add-ons/e563da55-4a80-11e4-9553-005056977bd0/786f9c6c-2312-44e8-9461-4e5b35831e10/releaseNotes</releaseNotesUrl>
+  <installationFolder/>
+</addOn>
