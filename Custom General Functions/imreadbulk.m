@@ -15,7 +15,7 @@ function out = imreadbulk(filenames, path)
 %    
 %
 % SEE ALSO:
-%    
+%    uiimread
 
 % Created on: June 12, 2020
 % By: Jeremiah Valenzuela
@@ -29,7 +29,7 @@ function out = imreadbulk(filenames, path)
 	end
   
 	if numel(filenames) > 1
-		out = cat(3, out, zeros([size(out), numel(filenames) - 1]));
+		out(end, end, numel(filenames)) = 0;
 		for nFiles = 2:numel(filenames)
 			waitbar((nFiles - 1) / numel(filenames), hWaitbar, join([num2str(nFiles - 1), '/', num2str(numel(filenames)), ' Images Loaded. Loading: ', strrep(filenames(nFiles), '_', '\_')], ""));
 			temp = imread(fullfile(path, filenames(nFiles)));
