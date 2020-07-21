@@ -55,9 +55,9 @@ function roipositioncheck(flagShowFOV, flagFlatfield)
 	
 	% To flatfield
 	if strcmpi(flagFlatfield, 'on')
-		if regexpi(dataSetName, 'red')
+		if regexpi(targetFilename, 'red')
 			colorName = 'Red';
-		elseif regexpi(dataSetName, 'blue')
+		elseif regexpi(targetFilename, 'blue')
 			colorName = 'Blue';
 		else
 			colorName = 'Green';
