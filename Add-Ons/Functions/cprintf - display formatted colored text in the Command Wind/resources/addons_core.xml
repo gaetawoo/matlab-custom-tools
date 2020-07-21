@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?><addonProperties xmlns="http://schemas.mathworks.com/matlab/addon/2014/addonProperties"><identifier type="GUID">e563da55-4a80-11e4-9553-005056977bd0</identifier><description>Syntax:
+<?xml version="1.0" encoding="UTF-8"?>
+<addonCore>
+  <label>cprintf - display formatted colored text in the Command Wind</label>
+  <version>1.11.0.0</version>
+  <type>Toolbox</type>
+  <identifier>e563da55-4a80-11e4-9553-005056977bd0</identifier>
+  <summary>Displays sprintf-formatted strings in the Command Window using the specified color/underline style</summary>
+  <description>Syntax:
      count = cprintf(style,format,...)
  
 Description:
@@ -52,4 +59,7 @@ Warning:
 This code heavily relies on undocumented and unsupported Matlab functionality. It works on Matlab 7+, but use at your own risk!
  
 A technical description of the implementation can be found at: http://UndocumentedMatlab.com/blog/cprintf
-See details &amp; current limitations in the main help section</description><authors><author><name>Yair Altman</name><contact></contact><organization>Consultant</organization></author></authors></addonProperties>
+See details &amp; current limitations in the main help section</description>
+  <createdBy name="Yair Altman"/>
+  <image>resources/screenshot.png</image>
+</addonCore>
