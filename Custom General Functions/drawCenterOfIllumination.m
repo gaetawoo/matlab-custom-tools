@@ -79,7 +79,7 @@ function circ = drawCenterOfIllumination(image, minVal, maxVal)
 	
 end
 
-%% funcSelectRect
+%% selectTreshhold
 function [minVal, maxVal] = selectThreshold(image)
 	% Adapted from readPoints
 	%   Read manually-defined points from image
