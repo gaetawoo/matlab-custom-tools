@@ -18,19 +18,16 @@ function [snip, xyfullcentroid, boundary] = blobsnipper(inputImage, threshold, s
   end
     
   %% Get centroid of spot
-  % Label and count contiguous regions above threshold
-  [bwblobs, blobcounts] = bwlabeljj3(inputImage > threshold);
-  
-  % Find largest contiguous region label
-  [largestblobSize, largestblobID] = max(sum(blobcounts(:) == (1:max(blobcounts))));
-  
-  % Get centroid of region with largest contiguous region label
-  rcfullcentroid = bwblobcentroidjj(bwblobs, largestblobID);
-  xyfullcentroid = [rcfullcentroid.Col, rcfullcentroid.Row];
+	rpOut = regionprops(imerode(imdilate(inputImage > threshold, strel('square', 9)), strel('square', 9)), inputImage, {'WeightedCentroid', 'Area', 'MaxIntensity', 'MeanIntensity'});
+	rpOut([rpOut.Area] < 9) = []; % Limit allowed blob sizes
+	xyfullcentroid = rpOut([rpOut.MeanIntensity] == max([rpOut.MeanIntensity])).WeightedCentroid;
+	rcfullcentroid.Col = xyfullcentroid(1);
+	rcfullcentroid.Row = xyfullcentroid(2);
+	
   % Alternate:
   % rcCentroid = bwblobcentroidjj(bwblobs, ...
   %  find(sum(blobcounts(:) == (1:max(blobcounts))) == max(sum(blobcounts(:) == (1:max(blobcounts))))));
-  if isnanfields(rcfullcentroid) | largestblobSize < 10 %#ok<OR2>
+  if isnanfields(rcfullcentroid) | isempty(xyfullcentroid) %#ok<OR2>
     cprintf('*Red', 'No blob found.\n\n')
     snip = [];
     return
