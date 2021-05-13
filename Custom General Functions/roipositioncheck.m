@@ -1,13 +1,14 @@
-function roipositioncheck(flagShowFOV, flagFlatfield)
+function roipositioncheck(flagShowFOV, flagFlatfield, flagShowLabels)
 	% ROIPOSITIONCHECK displays a selected image with a select ROI set overlaid and labeled. Can also
 	% display Field-of-View is a Project Parameters file is available.
 	%
 	% SYNTAX:
-	%     roipositioncheck(flagShowFOV, flagFlatfield)
+	%     roipositioncheck(flagShowFOV, flagFlatfield, flagShowLabels)
 	%
 	% INPUTS:
 	%    flagShowFOV - Whether or not to display the Field-of-View from the Project Parameters file
 	%    flagFlatfield - Whether or not to flatfield the image for a more uniform background
+	%	   flagShowLabels - Whether or not to show labels of regions
 	%
 	
 	% Created on: November 9, 2018
@@ -28,9 +29,14 @@ function roipositioncheck(flagShowFOV, flagFlatfield)
 	if nargin == 0
 		flagShowFOV = 'off';
 		flagFlatfield = 'off';
+		flagShowLabels = 'on';
 	end
 	if nargin == 1
 		flagFlatfield = 'on';
+		flagShowLabels = 'on';
+	end
+	if nargin == 2
+		flagShowLabels = 'on';
 	end
 	
 	% To show FOV
@@ -158,10 +164,12 @@ function roipositioncheck(flagShowFOV, flagFlatfield)
 			roiTable.Ystart(iRoiEntry) + roiTable.Height(iRoiEntry), ...
 			roiTable.Ystart(iRoiEntry), roiTable.Ystart(iRoiEntry)], ...
 			'LineWidth', 1.0, 'LineStyle', '-', 'Color', 'red')
-		xc = roiTable.Xstart(iRoiEntry) + roiTable.Width(iRoiEntry) / 2;
-		yc = roiTable.Ystart(iRoiEntry) + roiTable.Height(iRoiEntry) / 2;
-		text(xc + 4, yc + 6, roiTable.Name{iRoiEntry}, 'Color', 'black', 'FontSize', 27, 'FontName', 'Arial Bold', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle');
-		text(xc, yc, roiTable.Name{iRoiEntry}, 'Color', 'green', 'FontSize', 27,  'FontName', 'Arial', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle');
+		if strcmpi(flagShowLabels, 'on')
+			xc = roiTable.Xstart(iRoiEntry) + roiTable.Width(iRoiEntry) / 2;
+			yc = roiTable.Ystart(iRoiEntry) + roiTable.Height(iRoiEntry) / 2;
+			text(xc + 4, yc + 6, roiTable.Name{iRoiEntry}, 'Color', 'black', 'FontSize', 27, 'FontName', 'Arial Bold', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle');
+			text(xc, yc, roiTable.Name{iRoiEntry}, 'Color', 'green', 'FontSize', 27,  'FontName', 'Arial', 'HorizontalAlignment', 'center', 'VerticalAlignment', 'middle');
+		end
 	end
 	
 	% Plot FFOV boundary
