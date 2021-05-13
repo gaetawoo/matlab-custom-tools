@@ -1,7 +1,7 @@
 function R86 = calcBlobR86(inputImage, threshold)
 	
-	xy = regionprops(imerode(imdilate(inputImage > threshold, strel('square', 9)), strel('square', 9)), 'centroid');
-	xy = xy.Centroid;
+	xy = regionprops(imerode(imdilate(inputImage > threshold, strel('square', 9)), strel('square', 9)), 'WeightedCentroid');
+	xy = xy.WeightedCentroid;
 	
 	
 	% Create sub-pixel centroid-centered grid
