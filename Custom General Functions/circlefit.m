@@ -43,7 +43,7 @@ function circ = circlefit(x, y)
 	
 	x = x(:); y = y(:);
 	a = [x, y, ones(size(x))] \ -(x.^2 + y.^2);
-	a = round(a, 14) % Assume very small numbers are 0
+	a = round(a, 14); % Assume very small numbers are 0
 	circ.XYcenter = [-0.5 * a(1), -0.5 * a(2)];
 	circ.Radius = sqrt((a(1)^2 + a(2)^2) / 4 - a(3));
 end
