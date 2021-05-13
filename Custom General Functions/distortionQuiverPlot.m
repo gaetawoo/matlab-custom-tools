@@ -1,11 +1,16 @@
-function distortionQuiverPlot()
-	[filename, filepath] = uigetfile('*.csv', 'Select the Distortion Data csv file to plot.');
-	if filename == 0
-		return
+function distortionQuiverPlot(data)
+	plotTitle = {''};
+	filename = '';
+	if ~exist('data', 'var')
+		[filename, filepath] = uigetfile('*.csv', 'Select the Distortion Data csv file to plot.');
+		if filename == 0
+			return
+		end
+		plotTitle = inputdlg('Enter title of the plot', 'Enter Plot Title');
+		
+		data = readmatrix([filepath, filename], 'TrimNonNumeric', true);
+		if size(data, 2) == 5, data(:, [3:7]) = data; end
 	end
-	plotTitle = inputdlg('Enter title of the plot', 'Enter Plot Title');
-	
-	data = dlmread([filepath, filename]);
 	xVec = data(:,3) - data(:,5);
 	yVec = data(:,4) - data(:,6);
 	maxDist = max(abs(data(:, 7)));
@@ -14,7 +19,7 @@ function distortionQuiverPlot()
 	maxY = max((data(:, 6)));
 	minX = min((data(:, 5)));
 	minY = min((data(:, 6)));
-	arrowScale = 100;
+	arrowScale = 5;
 	
 	if regexpi(filename, 'image')
 		figure;
